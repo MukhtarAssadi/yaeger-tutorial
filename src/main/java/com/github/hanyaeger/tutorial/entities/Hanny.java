@@ -17,7 +17,7 @@ import java.util.Random;
 import java.util.Set;
 
 
-public class Hanny extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided, MouseMovedListener {
+public class Hanny extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided, Collider, MouseMovedListener {
     private HealthText healthText;
     private int health = 10;
     public Hanny(Coordinate2D location, HealthText healthText){

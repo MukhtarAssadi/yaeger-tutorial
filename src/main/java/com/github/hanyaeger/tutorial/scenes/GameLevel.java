@@ -2,15 +2,18 @@ package com.github.hanyaeger.tutorial.scenes;
 
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.tutorial.entities.Hanny;
+import com.github.hanyaeger.tutorial.entities.bubbles.AirBubble;
+import com.github.hanyaeger.tutorial.entities.bubbles.BubbleSpawner;
 import com.github.hanyaeger.tutorial.entities.sharky.Sharky;
 import com.github.hanyaeger.tutorial.entities.swordfish.SwordFish;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
 
 import java.util.Random;
 
-public class GameLevel extends DynamicScene {
+public class GameLevel extends DynamicScene implements EntitySpawnerContainer {
     @Override
     public void setupScene() {
         setBackgroundAudio("audio/waterworld.mp3");
@@ -28,5 +31,11 @@ public class GameLevel extends DynamicScene {
         addEntity(healthText);
         var hanny = new Hanny(new Coordinate2D(getHeight() / 10, getWidth() / 10), healthText);
         addEntity(hanny);
+
+    }
+
+    @Override
+    public void setupEntitySpawners() {
+        addEntitySpawner(new BubbleSpawner(getWidth(), getHeight()));
     }
 }
